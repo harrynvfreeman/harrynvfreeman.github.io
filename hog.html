@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Face Detection</title>
+  
+  <meta name="author" content="Harry Freeman">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+
+<body>
+    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+        <tr style="padding:0px">
+          <td style="padding:0px">
+            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+              <tr style="padding:0px">
+                <td style="padding:2.5%;width:63%;vertical-align:middle">
+                  <!-- <p>
+                    <a href="index.html">Home</a>
+                  </p> -->
+                  <p>
+                    <h2>Building my own Real Time Face Detector</h2>
+                  </p>
+                  <p>
+                    I built my own real-time face detector based off of Dalal and Triggs' 
+                    <a href="https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf" target="_blank">Histogram of Oriented Gradients</a>.
+                    I also referenced <a href="http://lear.inrialpes.fr/people/dalal/NavneetDalalThesis.pdf" target="_blank">Dalal's Thesis</a>
+                    as dives deeper into some of their implementations such as how trilinear interpolation is performed to distribute cell weight 
+                    into bins.
+                  </p>
+                  <p>
+                    The SVM classifier was trained using the <a href="http://vis-www.cs.umass.edu/lfw/" target="_blank">Labelled Faces in the Wild</a> dataset
+                    and the <a href="http://pascal.inrialpes.fr/data/human/" target="_blank">INRIA Person Dataset</a> (which is now restricted). The classifier 
+                    was retrained several times using hard-negative mining.
+                  </p>
+                  <p>
+                    The GitHub repo can be found <a href="https://github.com/harrynvfreeman/faceDetection" target="_blank">here</a>. The code was designed to run on 
+                    a low compute device. I use a <a href="https://www.gigabyte.com/us/Mini-PcBarebone/GB-BLCE-4105-rev-10#ov" target="_blank">Gigabyte Brix s</a>.
+                  </p>
+                  <p>
+                    Below is an example of the system running. I am using a 180&deg 
+                    <a href="https://www.amazon.com/gp/product/B00LQ854AG/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1" target="_blank">Fisheye Lens</a>.
+                    There are a couple known issues where NMS fails when one bounding box is 100% inside another, and faces near the edge of the camera
+                    are sometimes missed due to the fisheye distortion. As well, the network was trained on forward looking faces, and occasionally fails
+                    when I look sideways. I will get to these fixes when I find the time.
+                  </p>
+                  <video  width=80% height=80% muted autoplay loop>
+                    <source src="images/face_detection.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </td>
+              </tr>
+            </tbody></table>
+          </td>
+        </tr>
+      </table>
+</body>
+</html>
